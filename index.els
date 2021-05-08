@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dance Flyers</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/send_url.js"></script>
+  </head>
+  <body>
+    <header>
+      <a href="/" class="header-logo">Dance Flyers</a>
+    </header>
+    <div class="container">
+      <div class="container-header">
+        <h1>Dance Reviews</h1>
+        <a href="/new" class="new-button">+ 新規登録</a>
+      </div>
+      <div class="index-table-wrapper">
+        <div class="table-head">  
+          <span class="id-column">ID</span>
+          <span class="title-column">演目</span>
+        </div>
+        <ul class="table-body">
+          <% flyers.forEach((flyer) => { %>
+            <li>
+              <div class="flyer-data">
+                <span class="id-column"><%= flyer.id %></span>
+                <span class="title-column"><%= flyer.title %></span>
+                  
+              </div>
+  <!---　いつか挑戦
+            <span class="company_name-column">カンパニー</span>
+            <span class="date-column">日付</span>
+  --->
+  <!---　いつか挑戦
+                  <span class="company_name-column"><%= flyer.company_name %></span>
+                  <span class="date-column"><%= flyer.date %></span>
+  --->
+              <div class="flyer-menu">
+                <form class="delete-btn" action="/delete/<%= flyer.id %>" method="post">
+                  <input type="submit" value="削除">
+                </form> 
+                <a href="/edit/<%= flyer.id %>">編集</a>
+              </div>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
